@@ -124,15 +124,23 @@ const statsEl = document.querySelector('.hero-stats');
 if (statsEl) counterObserver.observe(statsEl);
 
 // ─── PARALLAX ───
+// ─── PARALLAX ───
+let ticking = false;
 window.addEventListener('scroll', () => {
-  if (isMobile) return;  // ← yeh line add karo
-  const scrollY = window.scrollY;
-  const orbs = document.querySelectorAll('.hero-orb');
-  orbs.forEach((orb, i) => {
-    orb.style.transform = `translate(${i % 2 === 0 ? scrollY * 0.08 : -scrollY * 0.06}px, ${scrollY * (0.05 + i * 0.02)}px)`;
-  });
-  const aboutBg = document.querySelector('.about-parallax-bg');
-  if (aboutBg) aboutBg.style.transform = `translateY(${scrollY * 0.03}px)`;
+  if (isMobile) return;
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      const orbs = document.querySelectorAll('.hero-orb');
+      orbs.forEach((orb, i) => {
+        orb.style.transform = `translate(${i % 2 === 0 ? scrollY * 0.06 : -scrollY * 0.04}px, ${scrollY * (0.03 + i * 0.01)}px)`;
+      });
+      const aboutBg = document.querySelector('.about-parallax-bg');
+      if (aboutBg) aboutBg.style.transform = `translateY(${scrollY * 0.02}px)`;
+      ticking = false;
+    });
+    ticking = true;
+  }
 });
 
 // ─── CONTACT FORM ───

@@ -16,6 +16,14 @@
   .img-badge { animation: none !important; }
   .scroll-line { animation: none !important; }
 }
+
+* {
+  will-change: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 :root {
   --bg-primary: #05060f;
   --bg-secondary: #0c0e1e;
@@ -233,6 +241,8 @@ img { max-width: 100%; display: block; }
   position: absolute; border-radius: 50%;
   filter: blur(70px); pointer-events: none; will-change: transform;
   animation: orbFloat 10s ease-in-out infinite;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .orb1 { width: 400px; height: 400px; background: rgba(123,92,245,0.18); top: -80px; left: -80px; animation-delay: 0s; }
 .orb2 { width: 300px; height: 300px; background: rgba(34,212,253,0.12); top: 30%; right: 5%; animation-delay: 3s; }
