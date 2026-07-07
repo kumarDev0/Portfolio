@@ -1,6 +1,8 @@
 /* ═══════════════════════════════════════════
    DEEPAK KUMAR — PORTFOLIO CSS
    Premium Dark Theme with Neon Accents
+   (Performance-tuned: reduced motion on mobile,
+   contain/will-change scoped, no layout-shift assets)
 ═══════════════════════════════════════════ */
 @media (max-width: 768px) {
   * {
@@ -13,8 +15,16 @@
   .hero-bg-grid { display: none; }
   .fab-pulse { display: none; }
   .hero-img-frame { animation: none !important; }
+  .hero-img-glow { animation: none !important; }
   .img-badge { animation: none !important; }
   .scroll-line { animation: none !important; }
+  /* Backdrop blur on a fixed, always-repainting nav is one of the heaviest
+     costs on mobile GPUs during scroll — swap for a solid background instead. */
+  .nav, .nav.scrolled {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(5,6,15,0.97);
+  }
 }
 
 * {
@@ -86,8 +96,8 @@ img { max-width: 100%; display: block; }
     border-radius: 50%;
     position: fixed; top: 0; left: 0;
     pointer-events: none; z-index: 9999;
-    transform: translate(-50%,-50%);
-    transition: transform 0.1s;
+    will-change: transform;
+    transform: translate3d(-50vw,-50vh,0);
   }
   .cursor-ring {
     width: 36px; height: 36px;
@@ -95,8 +105,9 @@ img { max-width: 100%; display: block; }
     border-radius: 50%;
     position: fixed; top: 0; left: 0;
     pointer-events: none; z-index: 9998;
-    transform: translate(-50%,-50%);
-    transition: transform 0.15s ease, width 0.3s, height 0.3s, border-color 0.3s;
+    will-change: transform;
+    transform: translate3d(-50vw,-50vh,0);
+    transition: width 0.3s, height 0.3s, border-color 0.3s;
   }
   body { cursor: none; }
 }
@@ -130,9 +141,9 @@ img { max-width: 100%; display: block; }
   background-clip: text;
 }
 .dot { color: var(--accent-cyan); -webkit-text-fill-color: var(--accent-cyan); }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
-  font-size: 0.9rem; font-weight: 500;
+  font-size: 0.88rem; font-weight: 500;
   color: var(--text-secondary);
   transition: var(--transition);
   position: relative;
@@ -159,6 +170,13 @@ img { max-width: 100%; display: block; }
 /* ─── CONTAINER ─── */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 .section { padding: 5rem 0; position: relative; overflow: hidden; }
+
+/* Skip layout/paint work for off-screen sections — major scroll-speed win.
+   Browser only renders these when they approach the viewport. */
+section.section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
 
 /* ─── SECTION LABELS ─── */
 .section-label {
@@ -221,10 +239,22 @@ img { max-width: 100%; display: block; }
 ═══════════════════════════════════════════ */
 .hero {
   min-height: 100svh;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center;
   padding: 6rem 3rem 4rem;
   position: relative; overflow: hidden;
-  gap: 3rem;
+}
+.hero-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; max-width: 1400px; margin: 0 auto;
+  gap: 3rem; position: relative; z-index: 2;
+}
+/* Pause decorative infinite animations when hero is scrolled out of view
+   — cuts continuous repaint cost during scroll on the rest of the page */
+.hero.anim-paused .hero-orb,
+.hero.anim-paused .hero-img-frame,
+.hero.anim-paused .hero-img-glow,
+.hero.anim-paused .img-badge {
+  animation-play-state: paused !important;
 }
 
 .hero-bg-grid {
@@ -455,7 +485,7 @@ img { max-width: 100%; display: block; }
 .card-divider { height: 1px; background: var(--border-card); margin: 0.7rem 0; }
 .card-info-row { display: flex; justify-content: space-between; align-items: center; padding: 0.35rem 0; font-size: 0.78rem; }
 .ci-label { color: var(--text-muted); }
-.ci-val { color: var(--text-secondary); text-align: right; font-size: 0.75rem; }
+.ci-val { color: var(--text-secondary); text-align: right; font-size: 0.72rem; word-break: break-word; }
 .status-open { color: var(--accent-lime) !important; }
 .card-skills-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
 .card-tag { padding: 0.18rem 0.55rem; background: rgba(123,92,245,0.15); border: 1px solid rgba(123,92,245,0.3); border-radius: 20px; font-size: 0.7rem; color: var(--accent-violet); }
@@ -485,6 +515,80 @@ img { max-width: 100%; display: block; }
 .skill-bar { height: 100%; border-radius: 4px; width: 0; background: var(--gradient-btn); transition: width 1.2s cubic-bezier(0.25,0.46,0.45,0.94); }
 
 /* ═══════════════════════════════════════════
+   FREELANCE PROJECTS — 3D PREMIUM CARDS
+═══════════════════════════════════════════ */
+.freelance { background: var(--bg-secondary); }
+.freelance-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem;
+  margin-top: 1rem; perspective: 1600px;
+}
+.freelance-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transform-style: preserve-3d;
+  transition: transform 0.15s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s ease, border-color 0.4s ease;
+  box-shadow: var(--shadow-card);
+  will-change: transform;
+}
+.freelance-card:hover {
+  border-color: rgba(123,92,245,0.4);
+  box-shadow: 0 45px 100px rgba(0,0,0,0.6), 0 0 60px rgba(123,92,245,0.22);
+}
+.fc-badge {
+  position: absolute; top: 16px; right: 16px; z-index: 3;
+  padding: 0.32rem 0.85rem;
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 700;
+  background: linear-gradient(135deg, #FFD700, #FFB800);
+  color: #1a1200; border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(255,184,0,0.4);
+  transform: translateZ(45px);
+}
+.fc-image-wrap {
+  position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+  transform: translateZ(20px);
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+.fc-image {
+  width: 100%; height: 100%; object-fit: cover; object-position: top center;
+}
+.fc-shine { display: none; }
+.fc-content { padding: 1.6rem; transform: translateZ(35px); display: flex; flex-direction: column; flex: 1; }
+.fc-content h3 {
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 700;
+  margin-bottom: 0.7rem; display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+}
+.fc-ai-tag {
+  font-family: var(--font-mono); font-size: 0.6rem; font-weight: 500;
+  padding: 0.2rem 0.5rem; border-radius: 20px; letter-spacing: 0.06em;
+  background: rgba(34,212,253,0.12); border: 1px solid rgba(34,212,253,0.3);
+  color: var(--accent-cyan); text-transform: uppercase;
+}
+.fc-content p { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.3rem; flex-grow: 1; }
+.fc-link {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.65rem 1.3rem;
+  background: var(--gradient-btn); border-radius: 50px;
+  font-size: 0.82rem; font-weight: 600; color: #fff;
+  transition: var(--transition);
+}
+.fc-link:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(123,92,245,0.45); }
+
+@media (max-width: 1024px) {
+  .freelance-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .freelance-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+  .freelance-card:hover { transform: none !important; }
+}
+
+/* ═══════════════════════════════════════════
    PROJECTS
 ═══════════════════════════════════════════ */
 .projects { background: var(--bg-secondary); }
@@ -510,7 +614,7 @@ img { max-width: 100%; display: block; }
 .proj-tags span { padding: 0.22rem 0.65rem; background: rgba(123,92,245,0.1); border: 1px solid rgba(123,92,245,0.25); border-radius: 20px; font-size: 0.7rem; color: var(--accent-violet); }
 
 /* ═══════════════════════════════════════════
-   EDUCATION / TIMELINE
+   EDUCATION / EXPERIENCE TIMELINE
 ═══════════════════════════════════════════ */
 .education { background: var(--bg-primary); }
 .timeline { position: relative; max-width: 780px; margin: 2rem auto 0; }
@@ -620,7 +724,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 1024px) {
   .nav { padding: 1rem 2rem; }
   .nav.scrolled { padding: 0.7rem 2rem; }
-  .nav-links { gap: 1.8rem; }
+  .nav-links { gap: 1.5rem; }
   .hero { padding: 6rem 2rem 4rem; gap: 2rem; }
   .hero-image-wrap { flex: 0 0 280px; }
   .hero-img-frame { width: 260px; height: 320px; }
@@ -640,14 +744,17 @@ img { max-width: 100%; display: block; }
   .hamburger { display: block; }
 
   .hero {
-    flex-direction: column-reverse;
     padding: 5rem 1.2rem 3rem;
     text-align: center;
-    gap: 2rem;
     min-height: auto;
     padding-top: 4.5rem;
   }
-  .hero-content { max-width: 100%; }
+  .hero-inner {
+    flex-direction: column-reverse;
+    gap: 2rem;
+    width: 100%;
+  }
+  .hero-content { max-width: 100%; width: 100%; }
   .hero-badge { justify-content: center; margin: 0 auto 1.2rem; }
   .hero-role { justify-content: center; }
   .hero-sub { font-size: 0.95rem; }
@@ -656,7 +763,11 @@ img { max-width: 100%; display: block; }
   .stat-num { font-size: 1.6rem; }
 
   .hero-image-wrap { flex: unset; width: 100%; justify-content: center; }
-  .hero-img-frame { width: 220px; height: 270px; }
+  .hero-img-frame {
+    width: 240px; height: 240px;
+    border-radius: 28px !important;
+    box-shadow: 0 0 0 6px rgba(123,92,245,0.1), 0 20px 50px rgba(123,92,245,0.3), 0 30px 70px rgba(0,0,0,0.5);
+  }
   .hero-img-glow { inset: -20px; }
   .img-badge { display: none; }
 
@@ -698,6 +809,6 @@ img { max-width: 100%; display: block; }
   .skills-grid { grid-template-columns: 1fr; }
   .hero-stats { flex-direction: row; }
   .stat-divider { display: none; }
-  .hero-img-frame { width: 190px; height: 240px; }
+  .hero-img-frame { width: 200px; height: 200px; }
   .btn-primary, .btn-outline { padding: 0.75rem 1.5rem; font-size: 0.88rem; }
 }

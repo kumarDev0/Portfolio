@@ -4,9 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deepak Kumar — Software Engineer</title>
+  <title>Deepak Kumar — Backend Software Engineer | Node.js, TypeScript & Generative AI</title>
+  <meta name="description" content="Deepak Kumar is a Backend Software Engineer (SDE-1) specializing in Node.js, TypeScript, Express.js and Generative AI / LLM integration. Currently at TravClan, open to new remote opportunities." />
+  <meta name="theme-color" content="#05060f" />
+
+  <!-- Preconnects for fonts (render-blocking reduction) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Preload LCP image for faster paint -->
+  <link rel="preload" as="image" href="assets/deepak.jpg" fetchpriority="high" />
+
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
@@ -15,7 +23,7 @@
 
 <body>
 
-  <!-- CUSTOM CURSOR -->
+  <!-- CUSTOM CURSOR (desktop only, CSS-gated) -->
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
 
@@ -26,12 +34,14 @@
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#freelance">Freelance</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="assets/CSE_Resume.docx" download class="nav-resume-btn">Download CV</a>
-    <button class="hamburger" id="hamburger">&#9776;</button>
+    <a href="assets/Deepak_Kumar_R.pdf" download class="nav-resume-btn">Download CV</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">&#9776;</button>
   </nav>
 
   <!-- HERO -->
@@ -42,10 +52,11 @@
     <div class="hero-orb orb3"></div>
     <div class="noise-overlay"></div>
 
+    <div class="hero-inner">
     <div class="hero-content">
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        Available for Remote Roles
+        Open to New Opportunities
       </div>
       <h1 class="hero-name">
         <span class="line-reveal">Deepak</span>
@@ -56,37 +67,39 @@
         <span class="typed-text" id="typed"></span><span class="cursor-blink">|</span>
       </div>
       <p class="hero-sub fade-in-up delay-2">
-        Full-Stack Engineer · AI Automation · SaaS Builder<br />
-        Shipping real products from Pune, India — for the world.
+        Backend Software Engineer (SDE-1) at TravClan · Generative AI & LLM Integration<br />
+        Building scalable systems from Pune, India — for the world.
       </p>
       <div class="hero-cta fade-in-up delay-3">
         <a href="#projects" class="btn-primary">View My Work</a>
-        <a href="assets/CSE_Resume.docx" download class="btn-outline">Download Resume</a>
+        <a href="assets/Deepak_Kumar_R.pdf" download class="btn-outline">Download Resume</a>
       </div>
       <div class="hero-stats fade-in-up delay-4">
-        <div class="stat-item"><span class="stat-num" data-target="3">0</span><span class="stat-label">Live
-            Projects</span></div>
+        <div class="stat-item"><span class="stat-num" data-target="20">0</span><span class="stat-label">APIs &
+            Services Built</span></div>
         <div class="stat-divider"></div>
-        <div class="stat-item"><span class="stat-num" data-target="200">0</span><span class="stat-label">GitHub
-            Commits</span></div>
+        <div class="stat-item"><span class="stat-num" data-target="10">0</span><span class="stat-label">DB Schemas
+            Optimized</span></div>
         <div class="stat-divider"></div>
-        <div class="stat-item"><span class="stat-num" data-target="5">0</span><span class="stat-label">Clients
-            Served</span></div>
+        <div class="stat-item"><span class="stat-num" data-target="5">0</span><span class="stat-label">AWS Services
+            Integrated</span></div>
       </div>
     </div>
 
     <div class="hero-image-wrap fade-in-right">
       <div class="hero-img-glow"></div>
       <div class="hero-img-frame">
-        <img src="assets/deepak.jpg" alt="Deepak Kumar" class="hero-img" id="heroImg"
+        <img src="assets/deepak.jpg" alt="Deepak Kumar, Backend Software Engineer" class="hero-img" id="heroImg"
+          width="320" height="380" fetchpriority="high"
           onerror="this.style.display='none';document.getElementById('heroPlaceholder').style.display='flex'" />
         <div class="hero-img-placeholder" id="heroPlaceholder">
           <span>DK</span>
         </div>
-        <div class="img-badge img-badge-1"><span>🚀</span> AI Builder</div>
+        <div class="img-badge img-badge-1"><span>🤖</span> Generative AI</div>
         <div class="img-badge img-badge-2"><span>💻</span> Node.js</div>
         <div class="img-badge img-badge-3"><span>⚡</span> Remote-Ready</div>
       </div>
+    </div>
     </div>
 
     <div class="scroll-hint">
@@ -102,29 +115,30 @@
       <div class="section-label reveal">About Me</div>
       <div class="about-grid">
         <div class="about-text reveal">
-          <h2 class="section-title">Building software that<br /><em>actually</em> matters.</h2>
-          <p>I'm a self-taught Full-Stack Software Engineer from Pune, India. I didn't learn to code in a classroom — I
-            built real products, for real clients, solving real problems. Every project on this site is live, deployed,
-            and used by actual people.</p>
-          <p>In just two months, I shipped a productized SaaS platform for dental clinics, a CRM system for small
-            businesses, and a full-featured job portal — all using Node.js, TypeScript, and modern AI tooling. I
-            currently consult local businesses on AI automation workflows that save them hours every week.</p>
-          <p>My goal: join an international remote team where I can grow fast, take ownership, and build products that
-            scale.</p>
+          <h2 class="section-title">Results-driven engineer,<br /><em>backend</em> at heart.</h2>
+          <p>I'm Deepak Kumar, a Backend Software Engineer (SDE-1) at TravClan, currently building and scaling
+            backend systems and RESTful APIs in a fast-paced, mission-critical environment using Node.js,
+            TypeScript, JavaScript, Python, SQL and Express.js.</p>
+          <p>I'm proficient in integrating Generative AI capabilities into production applications — Large Language
+            Models (LLMs), AI Agents, Retrieval-Augmented Generation (RAG), the Model Context Protocol (MCP), and
+            workflow automation — to build intelligent, scalable systems.</p>
+          <p>I care about performance optimization, system reliability, and writing clean, maintainable code that
+            solves complex engineering challenges. I'm looking for a high-performance role that scales with
+            business impact — ideally within an international remote team.</p>
           <div class="about-highlights">
             <div class="highlight-item"><span class="h-icon">🎯</span>
-              <div><strong>Self-Directed</strong>
-                <p>Built every skill independently through Claude AI, docs, and building</p>
+              <div><strong>Backend-First Mindset</strong>
+                <p>Node.js, TypeScript & Express.js powering production-critical services</p>
               </div>
             </div>
-            <div class="highlight-item"><span class="h-icon">🌐</span>
-              <div><strong>Remote-Native</strong>
-                <p>Async workflows, GitHub collaboration, distributed client work</p>
+            <div class="highlight-item"><span class="h-icon">🤖</span>
+              <div><strong>Generative AI Practitioner</strong>
+                <p>LLMs, RAG pipelines, AI Agents, vector databases & MCP integration</p>
               </div>
             </div>
             <div class="highlight-item"><span class="h-icon">⚡</span>
-              <div><strong>Fast Learner</strong>
-                <p>6+ hours daily practice — shipped 3 live products in 2 months</p>
+              <div><strong>Performance-Focused</strong>
+                <p>Query optimization, clean architecture & reliable, scalable deployments</p>
               </div>
             </div>
           </div>
@@ -138,25 +152,25 @@
                 <div class="card-avatar">DK</div>
                 <div>
                   <div class="card-name">Deepak Kumar</div>
-                  <div class="card-role">Software Engineer</div>
+                  <div class="card-role">Backend Software Engineer</div>
                 </div>
               </div>
               <div class="card-divider"></div>
-              <div class="card-info-row"><span class="ci-label">Stack</span><span class="ci-val">Node.js · TypeScript ·
-                  AI</span></div>
+              <div class="card-info-row"><span class="ci-label">Stack</span><span class="ci-val">Node.js ·
+                  TypeScript · GenAI</span></div>
               <div class="card-info-row"><span class="ci-label">Location</span><span class="ci-val">Pune, India
                   🇮🇳</span></div>
               <div class="card-info-row"><span class="ci-label">Email</span><span
-                  class="ci-val">deepakkumarbsf123@gmail.com</span></div>
-              <div class="card-info-row"><span class="ci-label">Status</span><span class="ci-val status-open">● Open to
-                  Work</span></div>
+                  class="ci-val">villainraaz92@gmail.com</span></div>
+              <div class="card-info-row"><span class="ci-label">Status</span><span class="ci-val status-open">●
+                  Open to Work</span></div>
               <div class="card-divider"></div>
               <div class="card-skills-row">
                 <span class="card-tag">Node.js</span>
                 <span class="card-tag">TypeScript</span>
-                <span class="card-tag">React</span>
-                <span class="card-tag">AI APIs</span>
-                <span class="card-tag">Docker</span>
+                <span class="card-tag">PostgreSQL</span>
+                <span class="card-tag">LLMs / RAG</span>
+                <span class="card-tag">AWS</span>
               </div>
             </div>
           </div>
@@ -173,19 +187,19 @@
       <div class="skills-grid">
         <div class="skill-card reveal" data-delay="0">
           <div class="skill-icon">⚙️</div>
-          <h3>Backend</h3>
+          <h3>Backend & Languages</h3>
           <div class="skill-tags">
-            <span>Node.js</span><span>Express.js</span><span>REST API</span><span>JWT Auth</span><span>TypeScript</span>
+            <span>Node.js</span><span>Express.js</span><span>TypeScript</span><span>JavaScript</span><span>Python</span><span>SQL</span>
           </div>
           <div class="skill-bar-wrap">
-            <div class="skill-bar" data-w="88"></div>
+            <div class="skill-bar" data-w="92"></div>
           </div>
         </div>
         <div class="skill-card reveal" data-delay="100">
           <div class="skill-icon">🎨</div>
-          <h3>Frontend</h3>
+          <h3>Frontend & Frameworks</h3>
           <div class="skill-tags">
-            <span>React.js</span><span>Next.js</span><span>HTML5</span><span>CSS3</span><span>Vercel</span>
+            <span>React</span><span>Next.js</span><span>LangChain</span><span>LangGraph</span><span>LangSmith</span>
           </div>
           <div class="skill-bar-wrap">
             <div class="skill-bar" data-w="80"></div>
@@ -193,39 +207,39 @@
         </div>
         <div class="skill-card reveal" data-delay="200">
           <div class="skill-icon">🤖</div>
-          <h3>AI & Automation</h3>
+          <h3>Generative AI</h3>
           <div class="skill-tags">
-            <span>LLM APIs</span><span>Claude AI</span><span>AI Workflows</span><span>Vibe Coding</span>
+            <span>LLMs</span><span>RAG</span><span>AI Agents</span><span>MCP</span><span>OpenAI API</span>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-w="88"></div>
+          </div>
+        </div>
+        <div class="skill-card reveal" data-delay="300">
+          <div class="skill-icon">🗄️</div>
+          <h3>Databases</h3>
+          <div class="skill-tags">
+            <span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>MySQL</span><span>DynamoDB</span>
           </div>
           <div class="skill-bar-wrap">
             <div class="skill-bar" data-w="85"></div>
           </div>
         </div>
-        <div class="skill-card reveal" data-delay="300">
-          <div class="skill-icon">🗄️</div>
-          <h3>Database</h3>
-          <div class="skill-tags">
-            <span>MongoDB</span><span>PostgreSQL</span><span>Prisma ORM</span>
-          </div>
-          <div class="skill-bar-wrap">
-            <div class="skill-bar" data-w="72"></div>
-          </div>
-        </div>
         <div class="skill-card reveal" data-delay="400">
-          <div class="skill-icon">🛠️</div>
-          <h3>DevOps & Tools</h3>
+          <div class="skill-icon">☁️</div>
+          <h3>Cloud & DevOps</h3>
           <div class="skill-tags">
-            <span>Git</span><span>GitHub</span><span>Docker</span><span>npm</span><span>VS Code</span>
+            <span>AWS</span><span>Docker</span><span>Git</span><span>GitHub Actions</span><span>CI/CD</span><span>Linux</span>
           </div>
           <div class="skill-bar-wrap">
-            <div class="skill-bar" data-w="75"></div>
+            <div class="skill-bar" data-w="82"></div>
           </div>
         </div>
         <div class="skill-card reveal" data-delay="500">
-          <div class="skill-icon">🌐</div>
-          <h3>Languages</h3>
+          <div class="skill-icon">🧭</div>
+          <h3>Soft Skills & Languages</h3>
           <div class="skill-tags">
-            <span>JavaScript</span><span>TypeScript</span><span>HTML5</span><span>CSS3</span><span>Bash</span>
+            <span>System Design</span><span>Debugging</span><span>Decision Making</span><span>English</span><span>Hindi</span>
           </div>
           <div class="skill-bar-wrap">
             <div class="skill-bar" data-w="90"></div>
@@ -235,77 +249,130 @@
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
+  <section class="education section" id="experience" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-label reveal">Career</div>
+      <h2 class="section-title text-center reveal">Work Experience</h2>
+      <div class="timeline">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="tc-year">2025 – 2026 · Remote / New Delhi</div>
+            <h3>SDE-1 (Backend) Software Engineer</h3>
+            <div class="tc-school">TravClan · Full-time</div>
+            <p>Developing and maintaining 20+ scalable backend services and RESTful APIs using Node.js,
+              TypeScript, and Express.js, supporting multiple business-critical workflows. Designed and optimized
+              10+ PostgreSQL database schemas to improve query efficiency for high-scale applications. Integrated
+              5+ AWS services to support scalable deployments, infrastructure automation, and application
+              reliability. Improved backend performance by optimizing 50+ complex SQL queries and API endpoints
+              using clean architecture principles. Built and integrated 15+ AI-powered features using Large
+              Language Models (LLMs) and modern Generative AI frameworks.</p>
+            <div class="tc-tags"><span>Node.js</span><span>TypeScript</span><span>Express.js</span><span>PostgreSQL</span><span>AWS</span><span>LLMs</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FREELANCE PROJECTS -->
+  <section class="freelance section" id="freelance">
+    <div class="container">
+      <div class="section-label reveal">Client Work</div>
+      <h2 class="section-title text-center reveal">Freelance Projects</h2>
+      <p class="section-sub text-center reveal">Premium, production-grade platforms designed and shipped end-to-end
+        for real clients — live and in use today.</p>
+
+      <div class="freelance-grid">
+
+        <div class="freelance-card reveal" data-delay="0">
+          <div class="fc-badge">Premium</div>
+          <div class="fc-image-wrap">
+            <img src="assets/proj-dental.webp" alt="Dentist Multi System — dental clinic website preview"
+              class="fc-image" loading="lazy" width="1000" height="1000" />
+            <div class="fc-shine"></div>
+          </div>
+          <div class="fc-content">
+            <h3>Dentist Multi System</h3>
+            <p>A premium, multi-clinic SaaS website platform for dental practices — elegant booking flow,
+              WhatsApp & call integration, service showcase, and patient reviews wrapped in a refined dark-luxury
+              UI built for conversions.</p>
+            <a href="https://dental-saas-ecru.vercel.app/" target="_blank" rel="noopener" class="fc-link">View
+              Live Project ↗</a>
+          </div>
+        </div>
+
+        <div class="freelance-card reveal" data-delay="150">
+          <div class="fc-badge">Premium</div>
+          <div class="fc-image-wrap">
+            <img src="assets/proj-interior.webp"
+              alt="Interior Designer Multi System with AI Integration — website preview" class="fc-image"
+              loading="lazy" width="1000" height="1000" />
+            <div class="fc-shine"></div>
+          </div>
+          <div class="fc-content">
+            <h3>Interior Designer Multi System <span class="fc-ai-tag">AI-Integrated</span></h3>
+            <p>A luxury interior design studio platform featuring an AI-powered assistant, immersive project
+              galleries, and a bespoke consultation booking flow — engineered to reflect a premium design brand.</p>
+            <a href="https://interier-designer-saas.vercel.app/" target="_blank" rel="noopener"
+              class="fc-link">View Live Project ↗</a>
+          </div>
+        </div>
+
+        <div class="freelance-card reveal" data-delay="300">
+          <div class="fc-badge">Premium</div>
+          <div class="fc-image-wrap">
+            <img src="assets/proj-restaurant.webp" alt="Zest & Ember Restaurant — website preview" class="fc-image"
+              loading="lazy" width="1000" height="1000" />
+            <div class="fc-shine"></div>
+          </div>
+          <div class="fc-content">
+            <h3>Zest & Ember Restaurant</h3>
+            <p>A world-cuisine restaurant experience site with a rich visual story, curated menu & specials
+              sections, and a seamless table reservation flow — built to make every visitor feel hungry to book.</p>
+            <a href="https://zest-ember-restaurant.vercel.app/" target="_blank" rel="noopener"
+              class="fc-link">View Live Project ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- PROJECTS -->
   <section class="projects section" id="projects">
     <div class="projects-bg-accent"></div>
     <div class="container">
       <div class="section-label reveal">Portfolio</div>
-      <h2 class="section-title text-center reveal">Live Projects</h2>
-      <p class="section-sub text-center reveal">Every project below is deployed and production-ready.</p>
+      <h2 class="section-title text-center reveal">Featured Project</h2>
+      <p class="section-sub text-center reveal">An AI-driven system built and led independently, actively in
+        development.</p>
 
       <div class="projects-grid">
 
         <div class="project-card reveal featured-card">
-          <div class="proj-accent-bar" style="background: linear-gradient(90deg, #6C63FF, #FF6584)"></div>
+          <div class="proj-accent-bar" style="background: linear-gradient(90deg, #6C63FF, #22D4FD)"></div>
           <div class="proj-top">
             <div class="proj-number">01</div>
             <div class="proj-links">
-              <a href="https://dental-saas-ecru.vercel.app/" target="_blank" class="proj-link-btn"
-                title="Live Demo">↗</a>
+              <a href="https://github.com/kumardev0" target="_blank" rel="noopener" class="proj-link-btn"
+                title="View on GitHub">↗</a>
             </div>
           </div>
-          <h3 class="proj-title">Dental Business SaaS Platform</h3>
-          <p class="proj-desc">A productized SaaS solution for dental clinics. Reusable codebase where only config
-            changes per client — onboarding time under 2 hours. Multiple clients served with zero downtime.</p>
+          <h3 class="proj-title">AI Sales Operating System</h3>
+          <p class="proj-desc">Lead developer on a scalable AI-powered sales platform. Built RESTful APIs with
+            Node.js, TypeScript and Express.js to support multiple business-critical workflows, with 10+ optimized
+            PostgreSQL schemas for improved scalability and maintainability of backend systems.</p>
           <div class="proj-impact">
-            <span class="impact-chip">⚡ 2hr Onboarding</span>
-            <span class="impact-chip">🟢 Live in Production</span>
-            <span class="impact-chip">♻️ Reusable Architecture</span>
+            <span class="impact-chip">🤖 15+ AI-Powered Features</span>
+            <span class="impact-chip">☁️ Cloud Deployments</span>
+            <span class="impact-chip">♻️ Clean, Modular Architecture</span>
           </div>
           <div class="proj-tags">
-            <span>Node.js</span><span>TypeScript</span><span>Vercel</span><span>SaaS</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="proj-accent-bar" style="background: linear-gradient(90deg, #43E97B, #38F9D7)"></div>
-          <div class="proj-top">
-            <div class="proj-number">02</div>
-            <div class="proj-links">
-              <a href="https://github.com/kumardev0" class="proj-link-btn" title="GitHub">↗</a>
-            </div>
-          </div>
-          <h3 class="proj-title">CRM System for Small Businesses</h3>
-          <p class="proj-desc">Full-featured CRM enabling small business owners to manage leads, track client
-            follow-ups, and monitor sales pipelines. JWT auth, role-based access, live dashboard.</p>
-          <div class="proj-impact">
-            <span class="impact-chip">🔐 JWT Auth</span>
-            <span class="impact-chip">📊 Live Dashboard</span>
-            <span class="impact-chip">200+ Commits</span>
-          </div>
-          <div class="proj-tags">
-            <span>Node.js</span><span>TypeScript</span><span>REST API</span><span>MongoDB</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="proj-accent-bar" style="background: linear-gradient(90deg, #FA709A, #FEE140)"></div>
-          <div class="proj-top">
-            <div class="proj-number">03</div>
-            <div class="proj-links">
-              <a href="https://job-freedom.vercel.app/" target="_blank" class="proj-link-btn" title="Live Demo">↗</a>
-
-            </div>
-          </div>
-          <h3 class="proj-title">Job Portal Platform</h3>
-          <p class="proj-desc">End-to-end job portal with employer posting, candidate applications, and full auth flows.
-            RESTful API backend with responsive frontend, search, filtering, and pagination.</p>
-          <div class="proj-impact">
-            <span class="impact-chip">👔 Employer + Candidate Flows</span>
-            <span class="impact-chip">🔍 Advanced Search</span>
-          </div>
-          <div class="proj-tags">
-            <span>Node.js</span><span>JavaScript</span><span>TypeScript</span><span>Vercel</span>
+            <span>Python</span><span>FastAPI</span><span>LangChain</span><span>PostgreSQL</span><span>OpenAI API</span><span>React</span>
           </div>
         </div>
 
@@ -324,35 +391,24 @@
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <div class="tc-year">2022 – 2026</div>
-            <h3>B.Tech — Computer Science</h3>
-            <div class="tc-school">IES University, Bhopal</div>
-            <p>Expected June 2026. Coursework includes Data Structures & Algorithms, Software Engineering, and Database
-              Management Systems.</p>
-            <div class="tc-tags"><span>DSA</span><span>Software Engineering</span><span>DBMS</span></div>
+            <div class="tc-year">2023 – 2026</div>
+            <h3>B.Tech — Computer Science Engineering</h3>
+            <div class="tc-school">IES College of Technology, Bhopal, India · CGPA 7.5/10</div>
+            <p>Building a digital population management system as a final-year project to convert physical
+              population data into a centralized digital database, improving accuracy, storage and
+              accessibility.</p>
+            <div class="tc-tags"><span>System Design</span><span>Databases</span><span>Software Engineering</span></div>
           </div>
         </div>
 
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <div class="tc-year">Completed 2022</div>
-            <h3>Diploma — Computer Science & Engineering</h3>
-            <div class="tc-school">Government Polytechnic, India</div>
-            <p>Strong foundation in computer science fundamentals, electronics, and engineering principles.</p>
-            <div class="tc-tags"><span>CS Fundamentals</span><span>Engineering</span></div>
-          </div>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="tc-year">Jan 2025 – Present</div>
-            <h3>Freelance Engineer & AI Consultant</h3>
-            <div class="tc-school">Self-Employed — Local Business Clients</div>
-            <p>Delivering custom web solutions and AI automation pipelines for real clients. Built 3 production-grade
-              products shipped independently.</p>
-            <div class="tc-tags"><span>Node.js</span><span>AI Automation</span><span>SaaS</span></div>
+            <div class="tc-year">2020 – 2022</div>
+            <h3>Diploma — Computer Science</h3>
+            <div class="tc-school">Navsahyadri Institute of Technology, Pune, India · CGPA 8.1/10</div>
+            <p>Strong foundation in computer science fundamentals, programming, and engineering principles.</p>
+            <div class="tc-tags"><span>CS Fundamentals</span><span>Programming</span></div>
           </div>
         </div>
 
@@ -366,29 +422,35 @@
     <div class="container">
       <div class="section-label reveal">Get In Touch</div>
       <h2 class="section-title text-center reveal">Let's Work Together</h2>
-      <p class="section-sub text-center reveal">Open to remote engineering roles worldwide. Let's build something great.
-      </p>
+      <p class="section-sub text-center reveal">Open to remote engineering roles worldwide. Let's build something
+        great.</p>
       <div class="contact-grid">
         <div class="contact-info reveal">
           <div class="contact-item">
             <span class="ci-icon">📧</span>
             <div>
               <div class="ci-label">Email</div><a
-                href="mailto:deepakkumarbsf123@gmail.com">deepakkumarbsf123@gmail.com</a>
+                href="mailto:villainraaz92@gmail.com">villainraaz92@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon">📞</span>
+            <div>
+              <div class="ci-label">Phone</div><a href="tel:+917258940044">+91 72589 40044</a>
             </div>
           </div>
           <div class="contact-item">
             <span class="ci-icon">💼</span>
             <div>
               <div class="ci-label">LinkedIn</div><a href="https://linkedin.com/in/kumardev0"
-                target="_blank">linkedin.com/in/kumardev0</a>
+                target="_blank" rel="noopener">linkedin.com/in/kumardev0</a>
             </div>
           </div>
           <div class="contact-item">
             <span class="ci-icon">🐙</span>
             <div>
               <div class="ci-label">GitHub</div><a href="https://github.com/kumardev0"
-                target="_blank">github.com/kumardev0</a>
+                target="_blank" rel="noopener">github.com/kumardev0</a>
             </div>
           </div>
           <div class="contact-item">
@@ -397,22 +459,22 @@
               <div class="ci-label">Location</div><span>Pune, India — Remote Worldwide</span>
             </div>
           </div>
-          <a href="assets/Deepak_Kumar_Resume.docx" download class="btn-primary download-resume-btn">⬇ Download
+          <a href="assets/Deepak_Kumar_R.pdf" download class="btn-primary download-resume-btn">⬇ Download
             Resume</a>
         </div>
         <div class="contact-form-wrap reveal">
           <form class="contact-form" id="contactForm" action="https://formspree.io/f/xykopvdk" method="POST">
             <div class="form-group">
-              <label>Your Name</label>
-              <input type="text" name="name" placeholder="John Smith" required />
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required />
             </div>
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" name="email" placeholder="john@company.com" required />
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="john@company.com" required />
             </div>
             <div class="form-group">
-              <label>Message</label>
-              <textarea name="message" rows="4" placeholder="Tell me about the role or project..." required></textarea>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell me about the role or project..." required></textarea>
             </div>
             <button type="submit" class="btn-primary" style="width:100%">Send Message ↗</button>
             <div class="form-success" id="formSuccess">✅ Message sent! I'll get back to you soon.</div>
@@ -429,9 +491,9 @@
         <div class="footer-logo">DK<span class="dot">.</span></div>
         <p>© 2026 Deepak Kumar. Designed & built with passion.</p>
         <div class="footer-links">
-          <a href="https://github.com/kumardev0" target="_blank">GitHub</a>
-          <a href="https://linkedin.com/in/kumardev0" target="_blank">LinkedIn</a>
-          <a href="mailto:deepakkumarbsf123@gmail.com">Email</a>
+          <a href="https://github.com/kumardev0" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/kumardev0" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:villainraaz92@gmail.com">Email</a>
         </div>
       </div>
     </div>
@@ -439,40 +501,40 @@
 
   <!-- AI CHATBOT -->
   <div class="chatbot-fab" id="chatFab" title="Chat with AI">
-    <img src="assets/deepak.jpg"
-      style="width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:top center;" />
+    <img src="assets/deepak.jpg" loading="lazy" width="40" height="40"
+      style="width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:top center;" alt="" />
     <span class="fab-pulse"></span>
   </div>
 
   <div class="chatbot-window" id="chatWindow">
     <div class="chat-header">
-      <div class="chat-avatar"><img src="assets/deepak.jpg"
-          style="width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:top center;" /></div>
+      <div class="chat-avatar"><img src="assets/deepak.jpg" loading="lazy" width="40" height="40"
+          style="width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:top center;" alt="" /></div>
       <div>
         <div class="chat-title">Deepak's AI Assistant</div>
         <div class="chat-status"><span class="status-dot"></span>Online</div>
       </div>
-      <button class="chat-close" id="chatClose">✕</button>
+      <button class="chat-close" id="chatClose" aria-label="Close chat">✕</button>
     </div>
     <div class="chat-messages" id="chatMessages">
       <div class="chat-msg bot">
-        <div class="msg-bubble">Hi! 👋 I'm Deepak's AI assistant. Ask me anything about his skills, projects,
-          experience, or availability!</div>
+        <div class="msg-bubble">Hi! 👋 I'm Deepak's AI assistant. Ask me anything about his skills, experience,
+          projects, or availability!</div>
       </div>
       <div class="chat-suggestions">
-        <button class="suggestion-btn" onclick="sendSuggestion(this)">What projects has he built?</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">What does he do at TravClan?</button>
         <button class="suggestion-btn" onclick="sendSuggestion(this)">What are his top skills?</button>
         <button class="suggestion-btn" onclick="sendSuggestion(this)">Is he open to remote work?</button>
-        <button class="suggestion-btn" onclick="sendSuggestion(this)">What's his salary expectation?</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">Tell me about his education</button>
       </div>
     </div>
     <div class="chat-input-row">
       <input type="text" id="chatInput" placeholder="Ask about Deepak..." />
-      <button id="chatSend">↑</button>
+      <button id="chatSend" aria-label="Send message">↑</button>
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 
 </html>
